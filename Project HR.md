@@ -43,7 +43,44 @@ pip install matplotlib seaborn pandas numpy joblib sklearn
 
 Berdasarkan employee_data.csv yang diperoleh, terdapat missing values pada kolom Attrition.
 
-![Data Description](https://github.com/user-attachments/assets/9a6f37d9-5abd-4b11-bc12-ff07e250b03c)
+| No | Column                     | Non-Null Count | Dtype   |
+|----|----------------------------|----------------|---------|
+| 1  | EmployeeId                 | 1470           | int64   |
+| 2  | Age                        | 1470           | int64   |
+| 3  | Attrition                  | 1058           | float64 |
+| 4  | BusinessTravel             | 1470           | object  |
+| 5  | DailyRate                  | 1470           | int64   |
+| 6  | Department                 | 1470           | object  |
+| 7  | DistanceFromHome           | 1470           | int64   |
+| 8  | Education                  | 1470           | int64   |
+| 9  | EducationField             | 1470           | object  |
+| 10 | EmployeeCount              | 1470           | int64   |
+| 11 | EnvironmentSatisfaction    | 1470           | int64   |
+| 12 | Gender                     | 1470           | object  |
+| 13 | HourlyRate                 | 1470           | int64   |
+| 14 | JobInvolvement             | 1470           | int64   |
+| 15 | JobLevel                   | 1470           | int64   |
+| 16 | JobRole                    | 1470           | object  |
+| 17 | JobSatisfaction            | 1470           | int64   |
+| 18 | MaritalStatus              | 1470           | object  |
+| 19 | MonthlyIncome              | 1470           | int64   |
+| 20 | MonthlyRate                | 1470           | int64   |
+| 21 | NumCompaniesWorked         | 1470           | int64   |
+| 22 | Over18                     | 1470           | object  |
+| 23 | OverTime                   | 1470           | object  |
+| 24 | PercentSalaryHike          | 1470           | int64   |
+| 25 | PerformanceRating          | 1470           | int64   |
+| 26 | RelationshipSatisfaction   | 1470           | int64   |
+| 27 | StandardHours              | 1470           | int64   |
+| 28 | StockOptionLevel           | 1470           | int64   |
+| 29 | TotalWorkingYears          | 1470           | int64   |
+| 30 | TrainingTimesLastYear      | 1470           | int64   |
+| 31 | WorkLifeBalance            | 1470           | int64   |
+| 32 | YearsAtCompany             | 1470           | int64   |
+| 33 | YearsInCurrentRole         | 1470           | int64   |
+| 34 | YearsSinceLastPromotion    | 1470           | int64   |
+| 35 | YearsWithCurrManager       | 1470           | int64   |
+
 
 #### Exploratory Data Analysis (EDA)
 
