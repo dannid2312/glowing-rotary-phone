@@ -41,6 +41,22 @@ Setup environment:
 pip install matplotlib seaborn pandas numpy joblib sklearn
 ```
 
+Berdasarkan employee_data.csv yang diperoleh, terdapat missing values pada kolom Attrition.
+
+![Data Description](https://github.com/user-attachments/assets/df62e146-2560-42dc-9f3b-a3b08d9ce9dc)
+
+#### Exploratory Data Analysis (EDA)
+
+Berdasarkan hasil EDA terhadap kolom numerik, diperoleh informasi bahwa EmployeeId memiliki nilai yang seluruhnya unique, sedangkan nilai EmployeeCount dan StandardHours hanya memiliki 1 nilai. Oleh sebab itu, ketiga kolom tersebut akan dihapus dan tidak akan digunakan untuk analisis ke depannya. 
+
+![EDA-Numerical](https://github.com/user-attachments/assets/8fd19ff1-abf1-49e2-a304-5103ac424cb7)
+
+Dari histogram diatas, dapat diperoleh informasi juga bahwa umur dan tingkat pendidikan pegawai memiliki distribusi normal sehingga merepresentasikan sebaran pegawai dari berbagai generasi. Sebagian besar data lainnya memiliki distribusi dengan right skewness dimana sebagian besar nilai terdapat di sebelah kiri, seperti DistanceFromHome, JobLevel, MonthlyIncome, PercentSalaryHike, dan durasi tahun bekerja. Dapat disimpulkan bahwa sebagai besar pegawai merupakan pegawai berpangkat rendah dengan income yg rendah juga, dan mereka tinggal dekat dari kantor yang belum lama di kantor.
+
+![EDA-Categorical](https://github.com/user-attachments/assets/8e14300b-ba10-499a-82fd-15e18208d516)
+
+Dari grafik diatas, dapat diperoleh bahwa seluruh pegawai sudah masuk usia kerja yaitu lebih dari 18 tahun. Lebih dari setengah pegawai merupakan pegawai pria, dimana sebagian besar pegawai sudah menikah. Lebih dari setengah pegawai bekerja di bagian Research & Development dengan latar belakang mayoritas adalah Life Sciences kemudian diikuti oleh Medical. Lebih dari 25% pegawai bekerja OverTime dan sebagian besar pegawai jarang bepergian dinas.
+
 ## Business Dashboard
 
 Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
