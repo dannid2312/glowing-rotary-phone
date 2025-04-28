@@ -43,7 +43,7 @@ pip install matplotlib seaborn pandas numpy joblib sklearn
 
 Berdasarkan employee_data.csv yang diperoleh, terdapat missing values pada kolom Attrition.
 
-![Data Description](https://github.com/user-attachments/assets/df62e146-2560-42dc-9f3b-a3b08d9ce9dc)
+![Data Description](https://github.com/user-attachments/assets/9a6f37d9-5abd-4b11-bc12-ff07e250b03c)
 
 #### Exploratory Data Analysis (EDA)
 
