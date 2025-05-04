@@ -94,24 +94,20 @@ Dari grafik diatas, dapat diperoleh bahwa seluruh pegawai sudah masuk usia kerja
 
 ### Data Preparation
 
-Berdasarkan tahapan data understanding, didapatkan informasi bahwa hanya kolom Attrition yang memiliki nilai kosong sehingga nilai kosong tersebut dapat diganti nilai 0. Kemudian EmployeeId seluruhnya unique, sedangkan EmployeeCount, Over18, dan StandardHours hanya memiliki 1 nilai, sehingga keempat kolom tersebut tidak digunakan untuk analisis lebih lanjut.
+Berdasarkan tahapan data understanding, didapatkan informasi bahwa hanya kolom Attrition yang memiliki nilai kosong sehingga nilai kosong tersebut dapat diganti nilai 0. Kemudian EmployeeId seluruhnya unique, sedangkan EmployeeCount, Over18, dan StandardHours hanya memiliki 1 nilai, sehingga keempat kolom tersebut tidak digunakan untuk analisis lebih lanjut. Setelah itu dilakukan pembagian data, yaitu 70% untuk data train yang digunakan untuk melakukan pemodelan prediksi dan 30% untuk data test yang digunakan untuk mengukur tingkat akurasi model.
+
 
 ```
 df['Attrition'] = df['Attrition'].fillna(0)
 df.drop(columns=['EmployeeId', 'EmployeeCount', 'Over18', 'StandardHours'], inplace=True)
-```
 
-Setelah itu dilakukan pembagian data, yaitu 70% untuk data train yang digunakan untuk melakukan pemodelan prediksi dan 30% untuk data test yang digunakan untuk mengukur tingkat akurasi model. Dari data test tersebut, diambil sebagian kecil data sebesar 10% dari data test untuk digunakan sebagai contoh deployment dari model machine learning yang dibuat.
-
-```
 target = 'Attrition'
 X = df.drop(columns=target)
 y = df[target]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
-X_test, X_dep, y_test, y_dep = train_test_split(X_test, y_test, test_size=0.1, random_state=42, stratify=y_test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 ```
 
-### Modelling
+### Model Logistic Regression
 
 Pemodelan dilakukan menggunakan logistic regression untuk mengukur parameter mana saja yang memberikan pengaruh kepada nilai attrition.
 Selain itu juga digunakan fungsi ColumnTransformer sebagai preprocessor untuk memudahkan konversi kolom sehingga lebih mudah ketika melakukan deployment. Berikut ini hasil evaluasi dari model machine learning dibuat:
@@ -119,21 +115,21 @@ Selain itu juga digunakan fungsi ColumnTransformer sebagai preprocessor untuk me
 Classification Report:
 | Class            | Precision | Recall | F1-Score | Support |
 | ---------------- | --------- | ------ | -------- | ------- |
-| 0.0              | 0.95      | 0.77   | 0.85     | 348     |
-| 1.0              | 0.29      | 0.69   | 0.41     | 48      |
-| **Accuracy**     |           |        | **0.76** | 396     |
-| **Macro avg**    | 0.62      | 0.73   | 0.63     | 396     |
-| **Weighted avg** | 0.87      | 0.76   | 0.79     | 396     |
+| 0.0              | 0.96      | 0.78   | 0.86     | 258     |
+| 1.0              | 0.33      | 0.78   | 0.46     | 36      |
+| **Accuracy**     |           |        | **0.78** | 294     |
+| **Macro Avg**    | 0.65      | 0.78   | 0.66     | 294     |
+| **Weighted Avg** | 0.88      | 0.78   | 0.81     | 294     |
 
 Confusion Matrix:
 |              | Predicted 0 | Predicted 1 |
 | ------------ | ----------- | ----------- |
-| **Actual 0** | 267         | 81          |
-| **Actual 1** | 15          | 33          |
+| **Actual 0** | 201         | 57          |
+| **Actual 1** | 8           | 28          |
 
-Model Logistic Regression menunjukkan performa yang cukup baik dalam mendeteksi kasus attrition. Dengan recall sebesar 0.69 pada kelas 1.0 (Attrition), model ini mampu mengenali sebagian besar karyawan yang berisiko keluar dari perusahaan. Meskipun precision-nya pada kelas ini masih rendah (0.29), nilai recall yang tinggi menunjukkan bahwa model sensitif terhadap kasus-kasus attrition, yang penting dalam konteks prediksi dini. Secara keseluruhan, model ini mencapai akurasi sebesar 76% dan f1-score sebesar 0.79 (weighted), yang mencerminkan keseimbangan performa dalam memprediksi kedua kelas. Dengan demikian, Logistic Regression dinilai sesuai untuk tujuan analisis ini karena mampu memberikan deteksi awal yang cukup andal terhadap potensi attrition di tempat kerja.
+Model Logistic Regression menunjukkan performa yang cukup baik dalam mendeteksi kasus attrition. Dengan recall sebesar 0.78 pada kelas 1.0 (Attrition), model ini mampu mengenali sebagian besar karyawan yang berisiko keluar dari perusahaan. Meskipun precision-nya pada kelas ini masih rendah (0.33), nilai recall yang tinggi menunjukkan bahwa model sensitif terhadap kasus-kasus attrition, yang penting dalam konteks prediksi dini. Secara keseluruhan, model ini mencapai akurasi sebesar 78% dan f1-score sebesar 0.81 (weighted), yang mencerminkan keseimbangan performa dalam memprediksi kedua kelas. Dengan demikian, Logistic Regression dinilai sesuai untuk tujuan analisis ini karena mampu memberikan deteksi awal yang cukup andal terhadap potensi attrition di tempat kerja.
 
-### Evaluation
+### Evaluasi Model
 
 Grafik berikut menampilkan 30 fitur paling berpengaruh terhadap kemungkinan seseorang mengundurkan diri (attrition) dari pekerjaannya berdasarkan model Logistic Regression. Sumbu horizontal menunjukkan koefisien dari masing-masing fitur, yang mencerminkan arah dan kekuatan pengaruhnya terhadap kemungkinan attrition. Fitur-fitur dengan koefisien positif (ditandai dengan warna merah) meningkatkan kemungkinan attrition, sedangkan fitur-fitur dengan koefisien negatif (ditandai dengan warna hijau) menurunkan kemungkinan tersebut.
 
@@ -147,7 +143,17 @@ Fitur-fitur seperti JobSatisfaction, JobInvolvement, dan YearsWithCurrManager ju
 
 ## Business Dashboard
 
-Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
+Dashboard “Jaya Jaya Maju: Human Resources” menyajikan analisis menyeluruh mengenai kondisi sumber daya manusia perusahaan, baik secara keseluruhan maupun khusus pada kelompok karyawan yang mengalami attrition (keluar dari perusahaan). Dashboard ini dilengkapi dengan dua filter utama, yaitu filter attrition (untuk melihat dan membandingkan sebaran data antara seluruh karyawan dan mereka yang telah keluar) dan filter job level (yang memungkinkan analisis lebih dalam berdasarkan jenjang jabatan tertentu). Selain itu, dashboard ini juga menyediakan fitur filter tambahan yang interaktif, di mana pengguna dapat melakukan klik langsung pada elemen visual seperti department, job role, overtime, education, gender, marital status, business travel, dan stock option untuk melihat distribusi data secara lebih spesifik dan tersegmentasi.
+
+![Dashboard](https://github.com/user-attachments/assets/5e0620fd-5dbf-4d50-ab52-8bfe9dd13806)
+
+Dari total 1.470 karyawan, sebanyak 179 orang (12,18%) mengalami attrition. Dalam distribusi menyeluruh, jabatan dengan jumlah karyawan terbanyak di antaranya berasal dari Sales Representative dan beberapa peran di Research & Development. Namun, saat filter attrition diaktifkan, tampak jelas bahwa tingkat pengunduran diri paling tinggi berasal dari jabatan Sales Representative (30,12%), diikuti oleh Laboratory Technician (18,92%) dan Research Scientist (13,01%), mengindikasikan adanya beban kerja atau ketidakpuasan yang tinggi pada posisi-posisi tersebut, meskipun tidak selalu dominan dalam jumlah.
+
+Karakteristik karyawan yang resign juga menunjukkan tren yang berbeda dibanding populasi umum. Mereka cenderung berusia lebih muda (33,47 tahun vs 36,92 tahun), memiliki masa kerja lebih singkat di perusahaan (5,19 tahun vs 7 tahun), dan lebih sering bekerja lembur (54,75% dibandingkan dengan 28,3% di keseluruhan populasi). Di sisi lain, mereka lebih jarang menerima stock option (67,6% tidak memiliki) dan memiliki pendapatan bulanan yang lebih rendah (4.873 dibandingkan dengan 6.503). Dari aspek psikologis dan kepuasan kerja, karyawan yang resign juga menunjukkan skor yang lebih rendah secara konsisten, seperti job satisfaction (2,53) dan environment satisfaction (2,39), dibandingkan dengan rerata populasi yang stabil di atas 2,7.
+
+Dari latar belakang pendidikan, Life Sciences dan Medical tetap menjadi kelompok dominan baik di populasi umum maupun pada kelompok yang resign, meskipun ada sedikit pergeseran proporsi. Distribusi berdasarkan gender dan status pernikahan juga menunjukkan bahwa karyawan laki-laki dan lajang cenderung lebih banyak mengalami attrition, namun perbedaannya tidak terlalu mencolok.
+
+Dengan seluruh fitur interaktif dan segmentasi yang tersedia, dashboard ini menjadi alat strategis yang sangat bermanfaat bagi manajemen untuk mengevaluasi dan memantau dinamika SDM secara real-time. Perbandingan antara populasi umum dan kelompok yang mengalami attrition memberikan wawasan penting bahwa attrition tidak hanya berkaitan dengan jumlah, tetapi mencerminkan pengalaman kerja dan kepuasan karyawan secara menyeluruh. Oleh karena itu, strategi retensi yang efektif perlu ditujukan secara spesifik kepada kelompok rentan, seperti karyawan baru, karyawan yang sering lembur, atau mereka yang tidak memiliki insentif finansial. Hal tersebut sangat penting untuk menciptakan lingkungan kerja yang lebih sehat, adil, dan berkelanjutan.
 
 ## Conclusion
 
