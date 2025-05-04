@@ -168,9 +168,11 @@ Hasil analisis ini kemudian digunakan sebagai dasar penyusunan rekomendasi strat
 Berdasarkan temuan tersebut, berikut adalah ringkasan strategi yang disarankan untuk menurunkan tingkat attrition dan meningkatkan retensi talenta:
 
 1. Optimalisasi Kompensasi dan Insentif
+
 Perusahaan perlu melakukan peninjauan ulang terhadap struktur gaji dan insentif terutama bagi jabatan berisiko tinggi seperti Sales Representative dan Laboratory Technician. Penyesuaian kompensasi yang kompetitif akan berdampak langsung terhadap peningkatan loyalitas karyawan.
 
 2. Manajemen Lembur yang Lebih Seimbang
+
 Lembur berlebihan berkontribusi signifikan terhadap meningkatnya attrition. Perusahaan disarankan menetapkan batasan lembur yang jelas dan memastikan kompensasi yang setara, guna menjaga kesehatan kerja dan motivasi karyawan.
 
 3. Pengurangan Beban Perjalanan Dinas
@@ -178,15 +180,19 @@ Lembur berlebihan berkontribusi signifikan terhadap meningkatnya attrition. Peru
 Tingginya frekuensi perjalanan bisnis juga meningkatkan potensi attrition. Strategi efisiensi perjalanan melalui digitalisasi pertemuan dan evaluasi urgensi perjalanan perlu diterapkan untuk menciptakan keseimbangan kerja yang lebih baik.
 
 4. Percepatan Mobilitas Karier
+
 Waktu yang lama sejak promosi terakhir menjadi indikator risiko pengunduran diri. Perusahaan harus menyediakan jalur karier yang jelas dan memperluas akses promosi untuk menjaga semangat dan aspirasi karyawan.
 
 5. Penguatan Faktor Kepuasan dan Keterlibatan Karyawan
+
 Faktor non-finansial seperti kepuasan terhadap lingkungan kerja, hubungan dengan atasan, serta keterlibatan dalam pekerjaan memiliki dampak signifikan dalam menurunkan attrition. Investasi pada aspek ini penting sebagai bagian dari strategi retensi jangka panjang.
 
 6. Retensi Talenta Berpengalaman
+
 Karyawan dengan masa kerja panjang dan pengalaman tinggi cenderung lebih loyal, namun tetap berisiko keluar jika tidak diberi perhatian. Pemberian proyek strategis, fleksibilitas kerja, dan program penghargaan jangka panjang direkomendasikan untuk mempertahankan kelompok ini.
 
 7. Penyesuaian Proses Rekrutmen dan Penempatan
+
 Posisi tertentu memiliki kecenderungan attrition yang lebih tinggi. Oleh karena itu, proses rekrutmen perlu diarahkan untuk menemukan kecocokan yang lebih baik dengan kebutuhan dan karakteristik jabatan, serta memperkuat program onboarding.
 
 Dengan implementasi strategi-strategi tersebut, perusahaan diharapkan dapat menurunkan tingkat attrition secara signifikan, menjaga stabilitas organisasi, serta meningkatkan efisiensi dan produktivitas sumber daya manusia.
