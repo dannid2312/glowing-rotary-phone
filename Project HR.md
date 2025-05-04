@@ -145,7 +145,7 @@ Fitur-fitur seperti JobSatisfaction, JobInvolvement, dan YearsWithCurrManager ju
 
 Dashboard “Jaya Jaya Maju: Human Resources” menyajikan analisis menyeluruh mengenai kondisi sumber daya manusia perusahaan, baik secara keseluruhan maupun khusus pada kelompok karyawan yang mengalami attrition (keluar dari perusahaan). Dashboard ini dilengkapi dengan dua filter utama, yaitu filter attrition (untuk melihat dan membandingkan sebaran data antara seluruh karyawan dan mereka yang telah keluar) dan filter job level (yang memungkinkan analisis lebih dalam berdasarkan jenjang jabatan tertentu). Selain itu, dashboard ini juga menyediakan fitur filter tambahan yang interaktif, di mana pengguna dapat melakukan klik langsung pada elemen visual seperti department, job role, overtime, education, gender, marital status, business travel, dan stock option untuk melihat distribusi data secara lebih spesifik dan tersegmentasi.
 
-![Dashboard](https://github.com/user-attachments/assets/5e0620fd-5dbf-4d50-ab52-8bfe9dd13806)
+![Dashboard HR](https://github.com/user-attachments/assets/02fd42d1-85f6-406d-bad2-5d8eb410537c)
 
 Dari total 1.470 karyawan, sebanyak 179 orang (12,18%) mengalami attrition. Dalam distribusi menyeluruh, jabatan dengan jumlah karyawan terbanyak di antaranya berasal dari Sales Representative dan beberapa peran di Research & Development. Namun, saat filter attrition diaktifkan, tampak jelas bahwa tingkat pengunduran diri paling tinggi berasal dari jabatan Sales Representative (30,12%), diikuti oleh Laboratory Technician (18,92%) dan Research Scientist (13,01%), mengindikasikan adanya beban kerja atau ketidakpuasan yang tinggi pada posisi-posisi tersebut, meskipun tidak selalu dominan dalam jumlah.
 
