@@ -133,7 +133,7 @@ Model Logistic Regression menunjukkan performa yang cukup baik dalam mendeteksi 
 
 Grafik berikut menampilkan 30 fitur paling berpengaruh terhadap kemungkinan seseorang mengundurkan diri (attrition) dari pekerjaannya berdasarkan model Logistic Regression. Sumbu horizontal menunjukkan koefisien dari masing-masing fitur, yang mencerminkan arah dan kekuatan pengaruhnya terhadap kemungkinan attrition. Fitur-fitur dengan koefisien positif (ditandai dengan warna merah) meningkatkan kemungkinan attrition, sedangkan fitur-fitur dengan koefisien negatif (ditandai dengan warna hijau) menurunkan kemungkinan tersebut.
 
-![Most Influential Features](https://github.com/user-attachments/assets/718bdb31-ba79-46a2-a9a7-89775d03c3e9)
+![Most Influential Factors](https://github.com/user-attachments/assets/8a20b5f4-0098-4f65-a2a5-c122699e0aa3)
 
 Fitur yang paling meningkatkan kemungkinan attrition adalah JobLevel yang rendah, JobRole_Sales Representative, dan JobRole_Laboratory Technician, menunjukkan bahwa posisi dengan level jabatan lebih rendah atau peran tertentu lebih rentan terhadap pengunduran diri. Begitu pula dengan variabel OverTime_Yes, BusinessTravel_Travel_Frequently, dan YearsAtCompany yang lebih rendah juga berkorelasi dengan meningkatnya attrition.
 
