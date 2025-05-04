@@ -174,6 +174,7 @@ Perusahaan perlu melakukan peninjauan ulang terhadap struktur gaji dan insentif 
 Lembur berlebihan berkontribusi signifikan terhadap meningkatnya attrition. Perusahaan disarankan menetapkan batasan lembur yang jelas dan memastikan kompensasi yang setara, guna menjaga kesehatan kerja dan motivasi karyawan.
 
 3. Pengurangan Beban Perjalanan Dinas
+
 Tingginya frekuensi perjalanan bisnis juga meningkatkan potensi attrition. Strategi efisiensi perjalanan melalui digitalisasi pertemuan dan evaluasi urgensi perjalanan perlu diterapkan untuk menciptakan keseimbangan kerja yang lebih baik.
 
 4. Percepatan Mobilitas Karier
