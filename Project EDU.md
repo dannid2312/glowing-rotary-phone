@@ -6,42 +6,44 @@ Jaya Jaya Institut merupakan salah satu institusi pendidikan perguruan yang tela
 Jumlah dropout yang tinggi ini tentunya menjadi salah satu masalah yang besar untuk sebuah institusi pendidikan. Oleh karena itu, Jaya Jaya Institut ingin mendeteksi secepat mungkin siswa yang mungkin akan melakukan dropout sehingga dapat diberi bimbingan khusus.
 
 ### Permasalahan Bisnis
+
 Permasalahan bisnis yang diidentifikasi dalam proyek ini meliputi:
 
-1. Faktor-faktor apa saja yang berkontribusi terhadap tingginya tingkat dropout (attrition) di Jaya Jaya Institut?
-
+1. **Faktor-faktor apa saja yang berkontribusi terhadap tingginya tingkat dropout (attrition) di Jaya Jaya Institut?**  
    Jaya Jaya Institut menghadapi masalah serius berupa tingginya angka siswa yang tidak menyelesaikan pendidikannya. Penyebab dropout sangat beragam, mulai dari masalah akademik seperti kegagalan mata kuliah dan minimnya evaluasi, hingga faktor non-akademik seperti latar belakang keluarga, status ekonomi, dan usia saat pendaftaran. Namun, institusi belum memiliki sistem yang mampu menganalisis dan mengidentifikasi keterkaitan faktor-faktor ini secara menyeluruh dan berbasis data.
 
-2. Bagaimana institusi dapat mengembangkan strategi berbasis data untuk menurunkan dropout rate secara signifikan?
-
+2. **Bagaimana institusi dapat mengembangkan strategi berbasis data untuk menurunkan dropout rate secara signifikan?**  
    Selama ini, strategi intervensi dilakukan secara umum dan reaktif, tanpa mempertimbangkan data historis siswa secara mendalam. Untuk meningkatkan efektivitas dan efisiensi intervensi, diperlukan sebuah pendekatan analitik yang mampu memetakan risiko dropout setiap siswa secara individual. Dengan demikian, pihak manajemen dan tenaga pendidik dapat melakukan upaya pencegahan secara lebih proaktif dan terarah.
 
-3. Apa pola atau indikator kunci yang dapat memprediksi dropout secara dini?
-
+3. **Apa pola atau indikator kunci yang dapat memprediksi dropout secara dini?**  
    Identifikasi dini terhadap siswa berisiko tinggi sangat penting untuk mencegah putus sekolah. Namun saat ini, Jaya Jaya Institut belum memiliki model prediktif atau indikator risiko yang teruji. Menemukan pola dropout melalui data akademik, evaluasi per semester, dan informasi sosiodemografis merupakan langkah awal yang krusial untuk menyusun sistem pemantauan berkelanjutan.
 
+---
+
 ### Cakupan Proyek
+
 Untuk menjawab permasalahan tersebut, proyek ini akan mencakup kegiatan-kegiatan berikut:
 
-1. Pengumpulan dan Integrasi Data Historis Siswa
-- Menggabungkan data dari berbagai sumber (nilai akademik, latar belakang demografis, status orang tua, evaluasi kurikuler, dan faktor eksternal seperti ekonomi makro).
-- Pembersihan data (data cleansing) untuk menangani missing value, inkonsistensi, dan duplikasi.
+1. **Pengumpulan dan Integrasi Data Historis Siswa**  
+   - Menggabungkan data dari berbagai sumber (nilai akademik, latar belakang demografis, status orang tua, evaluasi kurikuler, dan faktor eksternal seperti ekonomi makro).  
+   - Pembersihan data (data cleansing) untuk menangani missing value, inkonsistensi, dan duplikasi.
 
-2. Eksplorasi dan Analisis Data
-- Melakukan analisis statistik deskriptif untuk memahami karakteristik siswa yang dropout dan yang lulus.
-- Mengidentifikasi variabel yang memiliki korelasi kuat terhadap status dropout.
+2. **Eksplorasi dan Analisis Data**  
+   - Melakukan analisis statistik deskriptif untuk memahami karakteristik siswa yang dropout dan yang lulus.  
+   - Mengidentifikasi variabel yang memiliki korelasi kuat terhadap status dropout.
 
-3. Pengembangan Model Prediktif
-- Menggunakan pendekatan machine learning (misalnya logistic regression, decision tree, random forest, atau XGBoost) untuk memprediksi kemungkinan dropout.
-- Menentukan fitur/variabel penting dalam prediksi berdasarkan hasil model.
+3. **Pengembangan Model Prediktif**  
+   - Menggunakan pendekatan machine learning (misalnya logistic regression, decision tree, random forest, atau XGBoost) untuk memprediksi kemungkinan dropout.  
+   - Menentukan fitur/variabel penting dalam prediksi berdasarkan hasil model.
 
-4. Evaluasi Model dan Validasi Hasil
-- Menggunakan metrik seperti akurasi, precision, recall, dan F1-score untuk mengukur performa model.
-- Melakukan validasi silang (cross-validation) agar model tetap andal pada data baru.
+4. **Evaluasi Model dan Validasi Hasil**  
+   - Menggunakan metrik seperti akurasi, precision, recall, dan F1-score untuk mengukur performa model.  
+   - Melakukan validasi silang (cross-validation) agar model tetap andal pada data baru.
 
-5. Rekomendasi Strategi Intervensi
-- Menyusun rekomendasi kebijakan dan strategi intervensi yang tepat berdasarkan output model.
-- Mempersiapkan sistem pemantauan siswa berkelanjutan berbasis risiko.
+5. **Rekomendasi Strategi Intervensi**  
+   - Menyusun rekomendasi kebijakan dan strategi intervensi yang tepat berdasarkan output model.  
+   - Mempersiapkan sistem pemantauan siswa berkelanjutan berbasis risiko.
+
 
 ### Persiapan
 
