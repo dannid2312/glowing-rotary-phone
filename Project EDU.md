@@ -27,21 +27,21 @@ Untuk menjawab permasalahan tersebut, proyek ini akan mencakup kegiatan-kegiatan
 - Menggabungkan data dari berbagai sumber (nilai akademik, latar belakang demografis, status orang tua, evaluasi kurikuler, dan faktor eksternal seperti ekonomi makro).
 - Pembersihan data (data cleansing) untuk menangani missing value, inkonsistensi, dan duplikasi.
 
-3. Eksplorasi dan Analisis Data
-   a. Melakukan analisis statistik deskriptif untuk memahami karakteristik siswa yang dropout dan yang lulus.
-   b. Mengidentifikasi variabel yang memiliki korelasi kuat terhadap status dropout.
+2. Eksplorasi dan Analisis Data
+- Melakukan analisis statistik deskriptif untuk memahami karakteristik siswa yang dropout dan yang lulus.
+- Mengidentifikasi variabel yang memiliki korelasi kuat terhadap status dropout.
 
-4. Pengembangan Model Prediktif
-   a. Menggunakan pendekatan machine learning (misalnya logistic regression, decision tree, random forest, atau XGBoost) untuk memprediksi kemungkinan dropout.
-   b. Menentukan fitur/variabel penting dalam prediksi berdasarkan hasil model.
+3. Pengembangan Model Prediktif
+- Menggunakan pendekatan machine learning (misalnya logistic regression, decision tree, random forest, atau XGBoost) untuk memprediksi kemungkinan dropout.
+- Menentukan fitur/variabel penting dalam prediksi berdasarkan hasil model.
 
-5. Evaluasi Model dan Validasi Hasil
-   a. Menggunakan metrik seperti akurasi, precision, recall, dan F1-score untuk mengukur performa model.
-   b. Melakukan validasi silang (cross-validation) agar model tetap andal pada data baru.
+4. Evaluasi Model dan Validasi Hasil
+- Menggunakan metrik seperti akurasi, precision, recall, dan F1-score untuk mengukur performa model.
+- Melakukan validasi silang (cross-validation) agar model tetap andal pada data baru.
 
-6. Rekomendasi Strategi Intervensi
-   a. Menyusun rekomendasi kebijakan dan strategi intervensi yang tepat berdasarkan output model.
-   b. Mempersiapkan sistem pemantauan siswa berkelanjutan berbasis risiko.
+5. Rekomendasi Strategi Intervensi
+- Menyusun rekomendasi kebijakan dan strategi intervensi yang tepat berdasarkan output model.
+- Mempersiapkan sistem pemantauan siswa berkelanjutan berbasis risiko.
 
 ### Persiapan
 
