@@ -24,10 +24,8 @@ Permasalahan bisnis yang diidentifikasi dalam proyek ini meliputi:
 Untuk menjawab permasalahan tersebut, proyek ini akan mencakup kegiatan-kegiatan berikut:
 
 1. Pengumpulan dan Integrasi Data Historis Siswa
-
-   a. Menggabungkan data dari berbagai sumber (nilai akademik, latar belakang demografis, status orang tua, evaluasi kurikuler, dan faktor eksternal seperti ekonomi makro).
-
-   b. Pembersihan data (data cleansing) untuk menangani missing value, inkonsistensi, dan duplikasi.
+- Menggabungkan data dari berbagai sumber (nilai akademik, latar belakang demografis, status orang tua, evaluasi kurikuler, dan faktor eksternal seperti ekonomi makro).
+- Pembersihan data (data cleansing) untuk menangani missing value, inkonsistensi, dan duplikasi.
 
 3. Eksplorasi dan Analisis Data
    a. Melakukan analisis statistik deskriptif untuk memahami karakteristik siswa yang dropout dan yang lulus.
