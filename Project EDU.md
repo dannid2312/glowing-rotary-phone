@@ -199,7 +199,8 @@ Untuk mengatasi ketidakseimbangan antara dua kelas tersebut, yaitu mahasiswa yan
 Tahap selanjutnya adalah memisahkan fitur dari label target baik pada data pelatihan maupun data pengujian. Seluruh fitur numerik kemudian dinormalisasi menggunakan metode Min-Max Scaler, dengan tujuan mengubah skala nilai setiap fitur ke rentang 0 hingga 1. Skaler untuk masing-masing fitur disimpan secara terpisah agar dapat digunakan kembali saat proses prediksi pada data baru. Hasil dari tahapan ini adalah data pelatihan dan pengujian yang telah seimbang dan terstandardisasi, siap untuk digunakan dalam pelatihan model prediktif.
 
 ### Principal Component Analysis (PCA)
-Berdasarkan hasil heatmap sebelumnya dimana terdapat multikolinearitas antar kolom, sehingga dilakukan PCA. Kolom-kolom tersebut pertama-tama dibagi menjadi beberapa kelompok berdasarkan nilai linearitas antar variabelnya:
+Berdasarkan hasil heatmap sebelumnya, teridentifikasi adanya multikolinearitas antar kolom. Oleh karena itu, dilakukan analisis Principal Component Analysis (PCA) untuk mereduksi dimensi dan mengatasi multikolinearitas tersebut. Sebelum PCA diterapkan, kolom-kolom dibagi menjadi beberapa kelompok berdasarkan tingkat linearitas antar variabelnya. Setelah itu, dilakukan perhitungan variance dari masing-masing kelompok variabel.
+
 ```
 pca_academic_columns = ['Course', 'Curricular_units_1st_sem_credited', 'Curricular_units_1st_sem_enrolled', 
                         'Curricular_units_1st_sem_evaluations', 'Curricular_units_1st_sem_approved', 
@@ -207,16 +208,59 @@ pca_academic_columns = ['Course', 'Curricular_units_1st_sem_credited', 'Curricul
                         'Curricular_units_2nd_sem_credited', 'Curricular_units_2nd_sem_enrolled', 
                         'Curricular_units_2nd_sem_evaluations', 'Curricular_units_2nd_sem_approved', 
                         'Curricular_units_2nd_sem_grade', 'Curricular_units_2nd_sem_without_evaluations']
+```
+![pca academic](https://github.com/user-attachments/assets/6ac5eacf-8ef1-402f-a53b-82e20fe8f0e6)
 
+Pada kelompok variabel akademik, analisis PCA menunjukkan bahwa empat principal components pertama sudah mampu menjelaskan lebih dari 90% total variasi dari 13 variabel yang diukur. Hal ini mengindikasikan bahwa terdapat hubungan yang kuat atau korelasi tinggi antar variabel akademik, seperti jumlah mata kuliah yang diambil, jumlah evaluasi, nilai yang diperoleh, dan tingkat kelulusan di masing-masing semester. Dengan demikian, informasi yang terkandung dalam variabel-variabel ini sebagian besar tumpang tindih dan dapat direpresentasikan secara efisien dalam bentuk empat komponen utama. Reduksi dimensi ini tidak hanya menyederhanakan struktur data tetapi juga meningkatkan efisiensi dalam analisis selanjutnya, seperti dalam pembangunan model prediktif. Selain itu, penggunaan komponen utama ini membantu menghindari masalah multikolinearitas yang dapat mempengaruhi hasil analisis statistik atau pembelajaran mesin.
+
+```
 pca_parents_columns = ['Mothers_qualification', 'Fathers_qualification', 'Mothers_occupation', 'Fathers_occupation']
+```
+![pca parents](https://github.com/user-attachments/assets/8462d89b-2cda-41ea-89de-ba02ca3392ff)
 
+Untuk variabel latar belakang orang tua, hasil PCA menunjukkan bahwa dua principal components saja sudah cukup untuk menjelaskan lebih dari 90% variasi dari empat variabel yang terkait, yaitu pendidikan dan pekerjaan ayah serta ibu. Hasil ini menunjukkan bahwa variabel-variabel tersebut memiliki pola keterkaitan yang sangat erat dan saling merepresentasikan satu sama lain. Misalnya, tingkat pendidikan orang tua kemungkinan berkaitan langsung dengan jenis pekerjaan yang dijalani. Oleh karena itu, dua komponen utama yang terbentuk dari proses PCA dapat dianggap sebagai representasi ringkas dari status sosial ekonomi keluarga mahasiswa. Komponen ini penting untuk mempertimbangkan pengaruh faktor keluarga terhadap prestasi akademik mahasiswa maupun kebijakan pemberian dukungan finansial dan akademik.
+
+```
 pca_background_columns = ['Marital_status', 'Application_mode', 'Application_order',
                           'Previous_qualification', 'Previous_qualification_grade',
                           'Admission_grade', 'Age_at_enrollment']
 ```
+![pca background](https://github.com/user-attachments/assets/ddd01138-80d5-4e8d-bfcf-fc563aca55da)
 
-Kemudian dilakukan perhitungan variance dari masing-masing variabel tersebut:
-![image](https://github.com/user-attachments/assets/6ac5eacf-8ef1-402f-a53b-82e20fe8f0e6)
+Sedangkan pada variabel latar belakang mahasiswa, diperlukan lima principal components untuk dapat menjelaskan lebih dari 90% variasi dari tujuh variabel yang meliputi status pernikahan, jalur pendaftaran, urutan pilihan program studi, kualifikasi pendidikan sebelumnya, nilai masuk, serta usia saat mendaftar. Ini menunjukkan bahwa hubungan antar variabel pada kelompok ini tidak sekuat dua kelompok sebelumnya, sehingga informasi tersebar lebih merata di antara variabel-variabel tersebut. Meski demikian, PCA tetap berhasil mereduksi dimensi dari tujuh menjadi lima tanpa kehilangan banyak informasi penting. Komponen-komponen ini dapat dipandang sebagai representasi dari faktor demografis dan akademik awal yang membentuk profil unik tiap mahasiswa. Informasi ini dapat dimanfaatkan untuk segmentasi mahasiswa, identifikasi kelompok berisiko putus studi, maupun pengembangan strategi intervensi berbasis data.
+
+Hasil akhir dari data train setelah dilakukan praproses, termasuk reduksi dimensi menggunakan PCA, terdiri dari 23 variabel numerik dengan jumlah total 2.288 observasi. Tabel berikut merangkum masing-masing kolom beserta tipe datanya dan kategorisasi berdasarkan peran atau sumber variabel:
+
+| #   | Column                        | Non-Null Count | Dtype   |
+|-----|-------------------------------|----------------|---------|
+| 1   | Daytime_evening_attendance    | 2288           | float64 |
+| 2   | Nacionality                   | 2288           | float64 |
+| 3   | Displaced                     | 2288           | float64 |
+| 4   | Educational_special_needs     | 2288           | float64 |
+| 5   | Debtor                        | 2288           | float64 |
+| 6   | Tuition_fees_up_to_date       | 2288           | float64 |
+| 7   | Gender                        | 2288           | float64 |
+| 8   | Scholarship_holder            | 2288           | float64 |
+| 9   | International                 | 2288           | float64 |
+| 10  | Unemployment_rate             | 2288           | float64 |
+| 11  | Inflation_rate                | 2288           | float64 |
+| 12  | GDP                           | 2288           | float64 |
+| 13  | pca_academic_1                | 2288           | float64 |
+| 14  | pca_academic_2                | 2288           | float64 |
+| 15  | pca_academic_3                | 2288           | float64 |
+| 16  | pca_academic_4                | 2288           | float64 |
+| 17  | pca_parents_1                 | 2288           | float64 |
+| 18  | pca_parents_2                 | 2288           | float64 |
+| 19  | pca_background_1              | 2288           | float64 |
+| 20  | pca_background_2              | 2288           | float64 |
+| 21  | pca_background_3              | 2288           | float64 |
+| 22  | pca_background_4              | 2288           | float64 |
+| 23  | pca_background_5              | 2288           | float64 |
+
+Struktur data ini menunjukkan bahwa sebagian besar variabel awal telah dikompresi menjadi sejumlah principal components untuk mengurangi kompleksitas, menjaga informasi penting, dan meminimalkan multikolinearitas. Data ini telah siap untuk digunakan dalam model pembelajaran mesin atau analisis prediktif lainnya.
+
+## Modelling
+
 
 
 ## Business Dashboard
