@@ -186,6 +186,7 @@ df.drop(columns=['Status'], inplace=True)
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=42, shuffle=True)
 ```
 
+### Undersampling
 Berikut ini adalah hasil sebaran nilai dropout pada data pelatihan:
 | Dropout | Count |
 |---------|-------|
@@ -194,7 +195,29 @@ Berikut ini adalah hasil sebaran nilai dropout pada data pelatihan:
 
 Untuk mengatasi ketidakseimbangan antara dua kelas tersebut, yaitu mahasiswa yang tidak dropout dan yang dropout, maka dilakukan beberapa langkah penyesuaian. Data pelatihan awal dipisahkan berdasarkan kelas, kemudian dilakukan undersampling pada kelas mayoritas (mahasiswa yang tidak dropout) sehingga jumlahnya setara dengan kelas minoritas. Setelah itu, kedua kelompok data digabung kembali dan diacak ulang guna membentuk data pelatihan yang seimbang.
 
+### Scaling
 Tahap selanjutnya adalah memisahkan fitur dari label target baik pada data pelatihan maupun data pengujian. Seluruh fitur numerik kemudian dinormalisasi menggunakan metode Min-Max Scaler, dengan tujuan mengubah skala nilai setiap fitur ke rentang 0 hingga 1. Skaler untuk masing-masing fitur disimpan secara terpisah agar dapat digunakan kembali saat proses prediksi pada data baru. Hasil dari tahapan ini adalah data pelatihan dan pengujian yang telah seimbang dan terstandardisasi, siap untuk digunakan dalam pelatihan model prediktif.
+
+### Principal Component Analysis (PCA)
+Berdasarkan hasil heatmap sebelumnya dimana terdapat multikolinearitas antar kolom, sehingga dilakukan PCA. Kolom-kolom tersebut pertama-tama dibagi menjadi beberapa kelompok berdasarkan nilai linearitas antar variabelnya:
+```
+pca_academic_columns = ['Course', 'Curricular_units_1st_sem_credited', 'Curricular_units_1st_sem_enrolled', 
+                        'Curricular_units_1st_sem_evaluations', 'Curricular_units_1st_sem_approved', 
+                        'Curricular_units_1st_sem_grade', 'Curricular_units_1st_sem_without_evaluations',
+                        'Curricular_units_2nd_sem_credited', 'Curricular_units_2nd_sem_enrolled', 
+                        'Curricular_units_2nd_sem_evaluations', 'Curricular_units_2nd_sem_approved', 
+                        'Curricular_units_2nd_sem_grade', 'Curricular_units_2nd_sem_without_evaluations']
+
+pca_parents_columns = ['Mothers_qualification', 'Fathers_qualification', 'Mothers_occupation', 'Fathers_occupation']
+
+pca_background_columns = ['Marital_status', 'Application_mode', 'Application_order',
+                          'Previous_qualification', 'Previous_qualification_grade',
+                          'Admission_grade', 'Age_at_enrollment']
+```
+
+Kemudian dilakukan perhitungan variance dari masing-masing variabel tersebut:
+![image](https://github.com/user-attachments/assets/6ac5eacf-8ef1-402f-a53b-82e20fe8f0e6)
+
 
 ## Business Dashboard
 Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
