@@ -261,6 +261,26 @@ Struktur data ini menunjukkan bahwa sebagian besar variabel awal telah dikompres
 
 ## Modelling
 
+Evaluasi terhadap tiga model klasifikasi yang terdiri dari Decision Tree, Random Forest, dan Gradient Boosting menunjukkan perbedaan yang signifikan dalam hal akurasi dan keseimbangan performa antar kelas. Decision Tree memiliki akurasi sebesar 80%, dengan nilai f1-score yang cukup rendah untuk kelas 1 (0.74), mengindikasikan bahwa model ini kurang optimal dalam mengenali kategori tersebut. Sementara itu, Random Forest mencatat performa terbaik dengan akurasi 89%, serta nilai precision dan recall yang seimbang untuk kedua kelas, menjadikannya model yang kuat dan andal. Gradient Boosting juga memberikan hasil yang kompetitif, dengan akurasi 88% dan f1-score kelas 1 sebesar 0.85. Menariknya, Gradient Boosting menunjukkan recall tertinggi untuk kelas 1 (0.88), menjadikannya pilihan tepat untuk skenario yang memprioritaskan deteksi kasus kelas minoritas secara akurat. Secara keseluruhan, Random Forest unggul sebagai model paling seimbang, sementara Gradient Boosting layak dipertimbangkan untuk fokus pada sensitivitas terhadap kelas 1.
+| Model              | Class | Precision | Recall | F1-score | Support |
+|--------------------|-------|-----------|--------|----------|---------|
+| Decision Tree      | 0     | 0.84      | 0.83   | 0.83     | 449     |
+|                    | 1     | 0.73      | 0.75   | 0.74     | 277     |
+|                    | Avg (macro) | 0.79  | 0.79   | 0.79     | 726     |
+|                    | Avg (weighted) | 0.80 | 0.80   | 0.80     | 726     |
+|                    | Accuracy |         |        | **0.80** |         |
+|--------------------|-------|-----------|--------|----------|---------|
+| Random Forest      | 0     | 0.90      | 0.93   | 0.91     | 449     |
+|                    | 1     | 0.88      | 0.83   | 0.85     | 277     |
+|                    | Avg (macro) | 0.89  | 0.88   | 0.88     | 726     |
+|                    | Avg (weighted) | 0.89 | 0.89   | 0.89     | 726     |
+|                    | Accuracy |         |        | **0.89** |         |
+|--------------------|-------|-----------|--------|----------|---------|
+| Gradient Boosting  | 0     | 0.92      | 0.88   | 0.90     | 449     |
+|                    | 1     | 0.81      | 0.88   | 0.85     | 277     |
+|                    | Avg (macro) | 0.87  | 0.88   | 0.87     | 726     |
+|                    | Avg (weighted) | 0.88 | 0.88   | 0.88     | 726     |
+|                    | Accuracy |         |        | **0.88** |         |
 
 
 ## Business Dashboard
