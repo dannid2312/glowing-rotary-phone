@@ -18,8 +18,6 @@ Permasalahan bisnis yang diidentifikasi dalam proyek ini meliputi:
 3. **Apa pola atau indikator kunci yang dapat memprediksi dropout secara dini?**  
    Identifikasi dini terhadap siswa berisiko tinggi sangat penting untuk mencegah putus sekolah. Namun saat ini, Jaya Jaya Institut belum memiliki model prediktif atau indikator risiko yang teruji. Menemukan pola dropout melalui data akademik, evaluasi per semester, dan informasi sosiodemografis merupakan langkah awal yang krusial untuk menyusun sistem pemantauan berkelanjutan.
 
----
-
 ### Cakupan Proyek
 
 Untuk menjawab permasalahan tersebut, proyek ini akan mencakup kegiatan-kegiatan berikut:
@@ -261,7 +259,8 @@ Struktur data ini menunjukkan bahwa sebagian besar variabel awal telah dikompres
 
 ## Modelling
 
-Evaluasi terhadap tiga model klasifikasi yang terdiri dari Decision Tree, Random Forest, dan Gradient Boosting menunjukkan perbedaan yang signifikan dalam hal akurasi dan keseimbangan performa antar kelas. Decision Tree memiliki akurasi sebesar 80%, dengan nilai f1-score yang cukup rendah untuk kelas 1 (0.74), mengindikasikan bahwa model ini kurang optimal dalam mengenali kategori tersebut. Sementara itu, Random Forest mencatat performa terbaik dengan akurasi 89%, serta nilai precision dan recall yang seimbang untuk kedua kelas, menjadikannya model yang kuat dan andal. Gradient Boosting juga memberikan hasil yang kompetitif, dengan akurasi 88% dan f1-score kelas 1 sebesar 0.85. Menariknya, Gradient Boosting menunjukkan recall tertinggi untuk kelas 1 (0.88), menjadikannya pilihan tepat untuk skenario yang memprioritaskan deteksi kasus kelas minoritas secara akurat. Secara keseluruhan, Random Forest unggul sebagai model paling seimbang, sementara Gradient Boosting layak dipertimbangkan untuk fokus pada sensitivitas terhadap kelas 1.
+Permodelan dilakukan dengan menggunakan model Decision Tree, Random Forest, dan Gradient Boosting yang telah dilakukan hyperparameter tuning menggunakan GridSearchCV. Proses tuning dilakukan untuk menemukan kombinasi hyperparameter terbaik yang dapat meningkatkan performa setiap model. Pada model Decision Tree, tuning difokuskan pada hyperparameter seperti max_features, max_depth, dan criterion, yang bertujuan untuk mengontrol kompleksitas pohon keputusan dan meningkatkan akurasi model. Untuk Random Forest, hyperparameter yang dioptimalkan meliputi n_estimators, max_features, max_depth, dan criterion, dengan tujuan untuk meningkatkan kemampuan model dalam membuat keputusan yang lebih akurat dan stabil melalui ensemble pohon. Sedangkan pada model Gradient Boosting, tuning dilakukan terhadap max_depth, n_estimators, learning_rate, dan max_features, yang mempengaruhi kecepatan konvergensi dan pencegahan overfitting. Semua model dilatih dengan data training dan dilakukan cross-validation (cv=5) untuk memastikan validitas hasil, dengan n_jobs=-1 yang memungkinkan pemrosesan paralel.
+
 | Model              | Class | Precision | Recall | F1-score | Support |
 |--------------------|-------|-----------|--------|----------|---------|
 | Decision Tree      | 0     | 0.84      | 0.83   | 0.83     | 449     |
@@ -281,6 +280,14 @@ Evaluasi terhadap tiga model klasifikasi yang terdiri dari Decision Tree, Random
 |                    | Avg (macro) | 0.87  | 0.88   | 0.87     | 726     |
 |                    | Avg (weighted) | 0.88 | 0.88   | 0.88     | 726     |
 |                    | Accuracy |         |        | **0.88** |         |
+
+Evaluasi terhadap tiga model klasifikasi yang terdiri dari Decision Tree, Random Forest, dan Gradient Boosting menunjukkan perbedaan yang signifikan dalam hal akurasi dan keseimbangan performa antar kelas. Decision Tree memiliki akurasi sebesar 80%, dengan nilai f1-score yang cukup rendah untuk kelas 1 (0.74), mengindikasikan bahwa model ini kurang optimal dalam mengenali kategori tersebut. Sementara itu, Random Forest mencatat performa terbaik dengan akurasi 89%, serta nilai precision dan recall yang seimbang untuk kedua kelas, menjadikannya model yang kuat dan andal. Gradient Boosting juga memberikan hasil yang kompetitif, dengan akurasi 88% dan f1-score kelas 1 sebesar 0.85. Menariknya, Gradient Boosting menunjukkan recall tertinggi untuk kelas 1 (0.88), menjadikannya pilihan tepat untuk skenario yang memprioritaskan deteksi kasus kelas minoritas secara akurat. Secara keseluruhan, Random Forest unggul sebagai model paling seimbang, sementara Gradient Boosting layak dipertimbangkan untuk fokus pada sensitivitas terhadap kelas 1.
+
+![feature importances](https://github.com/user-attachments/assets/dcea1105-e7b8-4a54-b36d-1c742b758cfd)
+
+Berdasarkan grafik feature importance dari model Gradient Boosting yang dipilih, terlihat bahwa komponen hasil PCA pada variabel akademik memiliki kontribusi paling besar dalam memengaruhi prediksi model. Fitur pca_academic_1 menempati posisi teratas dengan nilai koefisien tertinggi, diikuti oleh pca_academic_2, pca_academic_3, dan pca_academic_4, yang secara kumulatif menunjukkan bahwa aspek akademik mahasiswa merupakan indikator paling dominan dalam menentukan hasil prediksi, seperti risiko putus studi atau keberhasilan studi.
+
+Setelah fitur akademik, pca_background_1 dan Tuition_fees_up_to_date juga menunjukkan pengaruh yang signifikan, yang mengindikasikan bahwa latar belakang siswa serta kepatuhan dalam pembayaran biaya kuliah turut menjadi faktor penting dalam model. Fitur-fitur lain seperti Scholarship_holder, pca_parents_2, dan pca_background_3 juga berkontribusi, meskipun dalam proporsi yang lebih kecil. Sementara itu, fitur-fitur seperti Educational_special_needs, International, dan Daytime_evening_attendance memiliki pengaruh paling rendah terhadap hasil prediksi, yang bisa diartikan bahwa mereka tidak memberikan informasi yang cukup membedakan untuk keputusan model.
 
 
 ## Business Dashboard
