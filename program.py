@@ -55,9 +55,6 @@ def preprocess(df, model_path='model'):
     # Gabungkan hasil PCA
     df = pd.concat([df, df_pca_academic, df_pca_parents], axis=1)
 
-    try: df.drop(columns=['Status'], inplace=True)
-    except: pass
-
     return df
 
 def predict(data):
