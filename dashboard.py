@@ -2,10 +2,9 @@ import streamlit as st
 import pandas as pd
 
 from program import preprocess, predict
-from columns_dict import categorical_columns, numerical_columns, categorical_options
+from columns_dict import all_columns, categorical_options
 
 st.title("Student Prediction (Prototype)")
-all_columns = categorical_columns + numerical_columns
 
 # Inisialisasi DataFrame manual
 if "manual_data" not in st.session_state:
