@@ -311,7 +311,7 @@ Sebaliknya, fitur seperti Educational_special_needs, International, dan Marital_
 
 ## Business Dashboard
 
-Dashboard ini merupakan alat analisis interaktif yang menyajikan data mahasiswa secara menyeluruh dengan fokus pada berbagai aspek akademik, demografis, sosial, dan ekonomi. Setiap elemen visualisasi, seperti grafik batang, pie chart, bubble chart, dan tabel, dapat diklik untuk menjadi filter yang menyesuaikan seluruh tampilan dashboard sesuai dengan kategori yang dipilih, memungkinkan eksplorasi data secara dinamis dan spesifik.
+Dashboard ini merupakan alat analisis interaktif yang menyajikan data mahasiswa secara menyeluruh dengan fokus pada berbagai aspek akademik, demografis, sosial, dan ekonomi. Setiap elemen visualisasi, seperti grafik batang, pie chart, bubble chart, dan tabel, dapat diklik untuk menjadi filter yang menyesuaikan seluruh tampilan dashboard sesuai dengan kategori yang dipilih, memungkinkan eksplorasi data secara dinamis dan spesifik. Dashboard bisa diakses secara lengkap melalui link berikut: https://public.tableau.com/views/ProjectEDU/Dashboard1
 
 ![Dashboard](https://github.com/user-attachments/assets/ec7ddd4f-e79d-453f-87d9-b05a491ac851)
 
