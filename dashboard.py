@@ -29,10 +29,22 @@ for i in range(0, len(all_columns), chunk_size):
             manual_input[col] = options_dict[choice]
         else:
             # numerik biasa
-            if "grade" in col.lower() or "rate" in col.lower() or "GDP" in col:
-                manual_input[col] = cols[j].number_input(col, value=0.0)
+            if "Application_order" in col:
+                manual_input[col] = cols[j].number_input(
+                    col, min_value=0, max_value=9, step=1, value=0
+                )
+            elif "grade" in col.lower():
+                manual_input[col] = cols[j].number_input(
+                    col, min_value=0.0, max_value=200.0, value=0.0
+                )
+            elif "rate" in col.lower() or "gdp" in col.lower():
+                manual_input[col] = cols[j].number_input(
+                    col, value=0.0
+                )
             else:
-                manual_input[col] = cols[j].number_input(col, value=0, step=1)
+                manual_input[col] = cols[j].number_input(
+                    col, value=0, step=1
+                )
 
 # Tambahkan baris ke DataFrame session_state
 if st.button("Add Row"):
