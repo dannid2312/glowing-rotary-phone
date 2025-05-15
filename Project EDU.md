@@ -324,16 +324,56 @@ Ketika filter Dropout diaktifkan, dashboard secara otomatis memperlihatkan data 
 Secara keseluruhan, dashboard ini memungkinkan pengguna untuk memahami gambaran umum profil mahasiswa sekaligus mengeksplorasi secara detail karakteristik kelompok khusus seperti mahasiswa dropout. Perbedaan yang jelas dalam performa akademik, status sosial, dan kondisi ekonomi antara kelompok dropout dengan keseluruhan mahasiswa membantu mengidentifikasi faktor-faktor risiko yang dapat digunakan sebagai dasar perumusan kebijakan intervensi pendidikan dan dukungan agar dapat menekan angka putus kuliah. Interaktivitas yang dimiliki dashboard ini menjadikannya alat yang sangat berguna untuk analisis data berbasis evidence dalam pengelolaan pendidikan tinggi.
 
 ## Menjalankan Sistem Machine Learning
-Jelaskan cara menjalankan protoype sistem machine learning yang telah dibuat. Selain itu, sertakan juga link untuk mengakses prototype tersebut.
+Aplikasi prototipe prediksi status mahasiswa ini merupakan sistem berbasis web yang dikembangkan menggunakan framework Streamlit dengan model machine learning Gradient Boosting. Sistem ini dirancang untuk memprediksi apakah seorang mahasiswa berpotensi untuk lulus (Graduate) atau drop out (Dropout) berdasarkan berbagai fitur demografis, akademik, dan ekonomi. Aplikasi ini dapat diakses secara daring melalui tautan berikut: https://glowing-rotary-phone-fxfwve4d6yro9hnwa8rfpq.streamlit.app/. Antarmuka yang disediakan memungkinkan pengguna untuk melakukan input data secara manual maupun melalui unggahan file CSV, sehingga fleksibel digunakan baik untuk satu entri maupun banyak entri sekaligus.
 
-```
+Pada bagian awal halaman, pengguna akan disuguhi form interaktif untuk mengisi data mahasiswa secara manual. Setiap kolom input ditampilkan secara sistematis dengan menggunakan komponen Streamlit seperti selectbox untuk data kategorikal dan number_input untuk data numerik. Data yang dapat diinput meliputi informasi seperti jenis kelamin, pekerjaan orang tua, urutan pilihan universitas, nilai akademik, GDP negara asal, hingga tingkat pengangguran. Setelah semua kolom terisi, pengguna dapat menekan tombol “➕ Add Row” untuk menyimpan data tersebut ke dalam memori sesi aplikasi. Setiap baris data yang ditambahkan akan ditampilkan dalam tabel gabungan sebagai bagian dari data yang siap diproses.
 
-```
+Sebagai alternatif input manual, aplikasi juga menyediakan fitur unggah file CSV melalui komponen file_uploader. File CSV yang diunggah harus memiliki struktur kolom yang sesuai dengan yang digunakan oleh model. Sistem akan memverifikasi apakah seluruh kolom yang dibutuhkan tersedia dalam file. Jika terdapat kolom yang hilang, pengguna akan mendapatkan notifikasi kesalahan. Setelah proses unggahan berhasil, data dari file akan digabungkan dengan data manual (jika ada), dan ditampilkan dalam sebuah tabel berjudul "Combined Data". Ini memungkinkan pengguna untuk melakukan verifikasi sebelum melanjutkan ke proses prediksi.
+
+Setelah data lengkap dan terintegrasi, pengguna dapat menekan tombol “🔮 Predict” untuk menjalankan proses prediksi. Data akan diproses terlebih dahulu oleh fungsi preprocess, lalu dimasukkan ke dalam model Gradient Boosting untuk mendapatkan hasil prediksi. Hasil prediksi akan ditampilkan dalam tabel di bagian “📊 Prediction Results”, dengan satu kolom tambahan berjudul “Prediction” yang menunjukkan status prediksi masing-masing mahasiswa. Untuk mempermudah interpretasi, prediksi yang menunjukkan “Graduate” akan diberi latar belakang berwarna hijau muda, sementara prediksi “Dropout” diberi warna merah muda.
+
+Secara teknis, aplikasi ini memanfaatkan modul program.py untuk menjalankan fungsi preprocessing, prediksi, dan konversi kembali label kategorikal ke bentuk aslinya, serta file columns_dict.py untuk mengatur nama-nama kolom dan mapping nilai kategorikal ke bentuk numerik. Kombinasi antara kemudahan antarmuka Streamlit dan kekuatan prediktif model Gradient Boosting menjadikan aplikasi ini sebagai alat bantu yang efektif dan mudah digunakan untuk keperluan analisis akademik awal. Prototipe ini dapat dikembangkan lebih lanjut untuk integrasi ke dalam sistem informasi akademik atau sistem peringatan dini bagi mahasiswa berisiko tinggi putus studi.
 
 ## Conclusion
-Jelaskan konklusi dari proyek yang dikerjakan.
+Proyek ini mengungkap bahwa risiko dropout mahasiswa di Jaya Jaya Institut sangat dipengaruhi oleh performa akademik, khususnya pada semester-semester awal. Melalui analisis feature importance dari model Gradient Boosting, terlihat bahwa komponen PCA dari variabel akademik—seperti nilai mata kuliah di semester 1 dan 2 serta jumlah mata kuliah yang diluluskan—memiliki pengaruh paling besar terhadap prediksi kelulusan. Ini menandakan bahwa keberhasilan akademik sejak dini merupakan kunci dalam mempertahankan mahasiswa hingga lulus. Selain itu, aspek seperti keterlibatan mahasiswa dalam mengambil, menilai, dan menyelesaikan mata kuliah juga berperan penting, sebagaimana tercermin dalam komponen pca_academic_2. Sementara itu, program studi yang diambil (pca_academic_3) dan konsistensi dalam hasil evaluasi (pca_academic_4) turut memperkuat pentingnya performa akademik sebagai indikator utama.
+
+Lebih jauh, faktor non-akademik seperti kepatuhan terhadap pembayaran biaya kuliah (Tuition_fees_up_to_date) dan usia saat mendaftar juga terbukti relevan dalam memengaruhi keberlanjutan studi. Di sisi lain, latar belakang keluarga, khususnya pendidikan orang tua, memberikan kontribusi tambahan yang tidak dapat diabaikan, meskipun tidak sebesar aspek akademik. Sebaliknya, informasi seperti status pernikahan, kebutuhan pendidikan khusus, atau kewarganegaraan mahasiswa memiliki dampak yang sangat minimal terhadap prediksi dan dapat dianggap kurang signifikan dalam konteks ini.
+
+Temuan ini memberikan dasar yang kuat bagi institusi untuk merancang strategi berbasis data dalam mengurangi angka dropout. Dengan mengenali mahasiswa berisiko sejak awal melalui indikator-indikator yang telah teridentifikasi, Jaya Jaya Institut dapat menerapkan intervensi yang lebih tepat sasaran, seperti program pendampingan akademik, dukungan finansial, atau penyesuaian beban studi. Pendekatan ini membuka peluang besar untuk menciptakan sistem peringatan dini yang efektif, memungkinkan institusi tidak hanya memahami pola attrition secara lebih mendalam, tetapi juga mengambil langkah preventif yang berdampak nyata dalam meningkatkan ketahanan studi mahasiswa.
 
 ### Rekomendasi Action Items
-Berikan beberapa rekomendasi action items yang harus dilakukan perusahaan guna menyelesaikan permasalahan atau mencapai target mereka.
-- action item 1
-- action item 2
+Berikut beberapa **rekomendasi action items** yang dapat dilakukan oleh Jaya Jaya Institut berdasarkan hasil analisis model machine learning dan temuan utama terkait faktor-faktor penyebab dropout:
+
+**1. Intervensi Akademik Dini**
+
+* **Implementasi sistem peringatan dini (early warning system)** yang memantau nilai akademik di semester 1 dan 2 secara real-time, terutama pada mata kuliah inti.
+* **Program bimbingan belajar atau remedial** untuk mahasiswa dengan nilai di bawah ambang batas tertentu.
+* **Mentoring akademik dari senior atau dosen pembimbing** untuk mendampingi mahasiswa baru secara rutin di tahun pertama.
+
+**2. Dukungan Finansial yang Tepat Sasaran**
+
+* **Identifikasi mahasiswa yang menunggak biaya kuliah** sejak awal dan beri mereka akses ke program cicilan atau bantuan keuangan.
+* **Kampanye transparansi biaya dan opsi pembayaran fleksibel**, agar mahasiswa tidak terdorong untuk dropout karena tekanan finansial.
+
+**3. Evaluasi dan Penyesuaian Kurikulum**
+
+* **Analisis ulang beban mata kuliah dan kesesuaian program studi** terutama untuk program yang memiliki tingkat dropout tinggi.
+* **Peningkatan fleksibilitas pengambilan mata kuliah** dan opsi lintas program studi untuk mahasiswa yang kesulitan menyesuaikan diri dengan kurikulumnya.
+
+**4. Peningkatan Pelibatan Mahasiswa dalam Kegiatan Akademik**
+
+* Dorong keterlibatan aktif dalam kegiatan kampus seperti proyek riset, organisasi mahasiswa, dan diskusi kelompok belajar untuk meningkatkan motivasi dan keterikatan.
+* **Monitoring jumlah SKS dan aktivitas akademik per semester** agar mahasiswa tetap pada jalur lulus tepat waktu.
+
+**5. Pelibatan Orang Tua dan Lingkungan Pendukung**
+
+* **Workshop atau webinar untuk orang tua**, terutama bagi yang latar pendidikannya rendah, untuk memberi pemahaman akan pentingnya dukungan terhadap proses belajar anak.
+* **Saluran komunikasi dua arah antara institusi dan keluarga**, seperti laporan berkala tentang perkembangan akademik mahasiswa.
+
+**6. Optimalisasi Data dan Pemodelan Berkelanjutan**
+
+* **Perbarui model prediksi dropout secara berkala** dengan data terbaru agar akurasi tetap terjaga.
+* **Integrasikan sistem ini ke dalam dashboard internal** institusi agar manajemen dan staf akademik dapat langsung melihat dan merespons risiko dropout.
+
+Dengan mengimplementasikan action items ini, Jaya Jaya Institut dapat secara signifikan menurunkan angka dropout dan meningkatkan retensi mahasiswa dengan pendekatan yang lebih terukur, proaktif, dan berbasis data.
+
