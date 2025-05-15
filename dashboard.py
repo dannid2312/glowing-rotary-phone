@@ -270,7 +270,7 @@ categorical_options = {
        
 # Saat input manual
 manual_input = {}
-chunk_size = 4
+chunk_size = 3
 
 for i in range(0, len(all_columns), chunk_size):
     cols = st.columns(chunk_size)
