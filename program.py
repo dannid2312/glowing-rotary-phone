@@ -57,7 +57,7 @@ def preprocess(df, model_path='model'):
 
     return df.drop(columns=["Status"])
 
-def prediction(data):
+def predict(data):
     model = joblib.load("model/gboost_model.joblib")
     result = model.predict(data)
     result = ['Dropout' if result[i] == 1 else 'Graduate' for i in range(len(result))]
@@ -68,4 +68,4 @@ if __name__ == '__main__':
     df = preprocess(df)
     print(df)
 
-    print(prediction(df))
+    print(predict(df))
