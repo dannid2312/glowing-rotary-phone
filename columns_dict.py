@@ -244,4 +244,12 @@ categorical_options = {
         "Personal care workers and the like": 153,
         "Protection and security services personnel": 154,
         "Market-oriented farmers and skilled agricultural and animal production workers": 161,
-    }}
+    },
+    "Displaced": {"No": 0, "Yes": 1},
+    "Educational_special_needs": {"No": 0, "Yes": 1},
+    "Debtor": {"No": 0, "Yes": 1},
+    "Tuition_fees_up_to_date": {"No": 0, "Yes": 1},
+    "Gender": {"Female": 0, "Male": 1},
+    "Scholarship_holder": {"No": 0, "Yes": 1},
+    "International": {"No": 0, "Yes": 1}
+}
