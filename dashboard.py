@@ -97,7 +97,7 @@ if "manual_data" not in st.session_state:
     st.session_state.manual_data = pd.DataFrame(columns=all_columns)
 
 combined_data = pd.concat([st.session_state.manual_data, df_uploaded], ignore_index=True)
-result = combined_data.copy()
+result = inverse_df(combined_data, inverse_categorical_options)
 
 st.subheader("🗂️ Combined Data")
 st.dataframe(combined_data, use_container_width=True)
@@ -108,8 +108,7 @@ if st.button("🔮 Predict"):
     else:
         hasil_prediksi = predict(preprocess(combined_data))
         result.insert(0, "Prediction", hasil_prediksi)
-        result = inverse_df(result, inverse_categorical_options)
-
+        
         # Optionally highlight predictions
         def highlight_pred(val):
             color = 'background-color: #b3ffb3' if val == 'Graduate' else 'background-color: #ffb3b3'
