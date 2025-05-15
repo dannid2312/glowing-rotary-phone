@@ -9,7 +9,7 @@ Jumlah dropout yang tinggi ini tentunya menjadi salah satu masalah yang besar un
 
 Permasalahan bisnis yang diidentifikasi dalam proyek ini meliputi:
 
-1. **Faktor-faktor apa saja yang berkontribusi terhadap tingginya tingkat dropout (attrition) di Jaya Jaya Institut?**  
+1. **Faktor-faktor apa saja yang berkontribusi terhadap tingginya tingkat dropout di Jaya Jaya Institut?**  
    Jaya Jaya Institut menghadapi masalah serius berupa tingginya angka siswa yang tidak menyelesaikan pendidikannya. Penyebab dropout sangat beragam, mulai dari masalah akademik seperti kegagalan mata kuliah dan minimnya evaluasi, hingga faktor non-akademik seperti latar belakang keluarga, status ekonomi, dan usia saat pendaftaran. Namun, institusi belum memiliki sistem yang mampu menganalisis dan mengidentifikasi keterkaitan faktor-faktor ini secara menyeluruh dan berbasis data.
 
 2. **Bagaimana institusi dapat mengembangkan strategi berbasis data untuk menurunkan dropout rate secara signifikan?**  
