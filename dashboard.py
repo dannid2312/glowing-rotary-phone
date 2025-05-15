@@ -57,6 +57,7 @@ else:
 
 # Gabungkan data manual dan CSV
 combined_data = pd.concat([st.session_state.manual_data, df_uploaded], ignore_index=True)
+result = combined_data.copy()
 
 st.subheader("Combined Data")
 st.dataframe(combined_data)
@@ -68,5 +69,5 @@ if st.button("Predict"):
     else:
         st.write("🔮 This is where your model prediction will go.")
         hasil_prediksi = predict(preprocess(combined_data))
-        combined_data.insert(0, "Prediction", hasil_prediksi)
-        st.dataframe(combined_data)
+        result.insert(0, "Prediction", hasil_prediksi)
+        st.dataframe(result)
