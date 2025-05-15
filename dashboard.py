@@ -1,8 +1,13 @@
 import streamlit as st
 import pandas as pd
 
-from program import preprocess, predict
+from program import preprocess, predict, inverse_df
 from columns_dict import all_columns, categorical_options
+
+inverse_categorical_options = {
+    col: {v: k for k, v in mapping.items()}
+    for col, mapping in categorical_options.items()
+}
 
 # Custom CSS for spacing & borders
 st.markdown("""
@@ -103,6 +108,8 @@ if st.button("🔮 Predict"):
     else:
         hasil_prediksi = predict(preprocess(combined_data))
         result.insert(0, "Prediction", hasil_prediksi)
+        result = inverse_df(result, inverse_categorical_options)
+
         # Optionally highlight predictions
         def highlight_pred(val):
             color = 'background-color: #b3ffb3' if val == 'Graduate' else 'background-color: #ffb3b3'
