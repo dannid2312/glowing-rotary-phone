@@ -31,7 +31,7 @@ Untuk menjawab permasalahan tersebut, proyek ini akan mencakup kegiatan-kegiatan
    - Mengidentifikasi variabel yang memiliki korelasi kuat terhadap status dropout.
 
 3. **Pengembangan Model Prediktif**  
-   - Menggunakan pendekatan machine learning (misalnya logistic regression, decision tree, random forest, atau XGBoost) untuk memprediksi kemungkinan dropout.  
+   - Menggunakan pendekatan machine learning (misalnya decision tree, random forest, atau gradient boosting) untuk memprediksi kemungkinan dropout.  
    - Menentukan fitur/variabel penting dalam prediksi berdasarkan hasil model.
 
 4. **Evaluasi Model dan Validasi Hasil**  
@@ -145,7 +145,7 @@ Selain itu, terdapat pula kolom lain yang tampaknya telah melalui proses label e
 | Curricular units 2nd sem (without evaluations) | Number of second semester curricular units without evaluations. (Numerical) |
 | Unemployment rate                              | National unemployment rate at time of enrollment (%). (Float) |
 | Inflation rate                                 | National inflation rate at time of enrollment (%). (Float) |
-| GDP                                            | Rate of Growth from Gross Domestic Product per capita at time of enrollment (%). (Float) |
+| GDP                                            | Growth of Gross Domestic Product per capita at time of enrollment (%). (Float) |
 | Status                                         | Final academic status of the student. (Categorical: Enrolled, Graduate, Dropout) |
 
 #### Bivariate Data Analysis
