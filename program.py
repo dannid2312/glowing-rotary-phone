@@ -62,3 +62,11 @@ def predict(data):
     result = model.predict(data)
     result = ['Dropout' if result[i] == 1 else 'Graduate' for i in range(len(result))]
     return result
+
+def inverse_df(pred_df, inverse_dict):
+    df_inversed = pred_df.copy()
+    for col in inverse_dict.keys():
+        if col in df_inversed.columns:
+            # Map angka ke label kategori pakai dictionary inverse
+            df_inversed[col] = df_inversed[col].map(inverse_dict[col]).fillna(df_inversed[col])
+    return df_inversed
