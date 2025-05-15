@@ -55,7 +55,10 @@ def preprocess(df, model_path='model'):
     # Gabungkan hasil PCA
     df = pd.concat([df, df_pca_academic, df_pca_parents], axis=1)
 
-    return df.drop(columns=["Status"])
+    try: df.drop(columns=['Status'], inplace=True)
+    except: pass
+
+    return df
 
 def predict(data):
     model = joblib.load("model/gboost_model.joblib")
