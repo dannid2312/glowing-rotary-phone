@@ -14,26 +14,6 @@ all_columns = [
     "Unemployment_rate", "Inflation_rate", "GDP"
 ]
 
-categorical_columns = [
-    "Marital_status", "Application_mode", "Course",
-    "Daytime_evening_attendance", "Previous_qualification", 
-    "Nacionality", "Mothers_qualification", "Fathers_qualification",
-    "Mothers_occupation", "Fathers_occupation",  "Displaced",
-    "Educational_special_needs", "Debtor", "Tuition_fees_up_to_date", "Gender",
-    "Scholarship_holder", "Age_at_enrollment", "International"
-]
-
-numerical_columns = [
-    "Application_order", "Previous_qualification_grade", "Admission_grade",
-    "Curricular_units_1st_sem_credited", "Curricular_units_1st_sem_enrolled",
-    "Curricular_units_1st_sem_evaluations", "Curricular_units_1st_sem_approved",
-    "Curricular_units_1st_sem_grade", "Curricular_units_1st_sem_without_evaluations",
-    "Curricular_units_2nd_sem_credited", "Curricular_units_2nd_sem_enrolled",
-    "Curricular_units_2nd_sem_evaluations", "Curricular_units_2nd_sem_approved",
-    "Curricular_units_2nd_sem_grade", "Curricular_units_2nd_sem_without_evaluations",
-    "Unemployment_rate", "Inflation_rate", "GDP"
-]
-
 categorical_options = {
     "Marital_status": {
         "Single": 1,
