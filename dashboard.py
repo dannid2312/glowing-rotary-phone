@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from program import preprocess, prediction
+from program import preprocess, predict
 
 st.header("Student Prediction (Prototype)")
 
@@ -152,7 +152,7 @@ with st.expander("View the Raw Data"):
 # Tombol predict (fungsi prediksi dan preprocessing harus disediakan)
 if st.button('Predict'):
     # Contoh pemanggilan fungsi, sesuaikan dengan fungsi preprocess dan prediksi yang kamu punya
-    new_data = data_preprocessing(data=data)  
+    new_data = preprocess(data=data)  
     with st.expander("View the Preprocessed Data"):
         st.dataframe(data=new_data, width=800, height=10)
-    st.write("Prediction Result: {}".format(prediction(new_data)))
+    st.write("Prediction Result: {}".format(predict(new_data)))
