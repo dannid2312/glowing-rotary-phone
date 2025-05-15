@@ -51,14 +51,7 @@ st.subheader("Or Upload CSV")
 uploaded_file = st.file_uploader("Upload a CSV file with the correct columns", type=["csv"])
 
 if uploaded_file:
-    df_uploaded = pd.read_csv(uploaded_file)
-
-    # Validasi kolom
-    if set(df_uploaded.columns) == set(all_columns):
-        st.success("CSV successfully uploaded and validated.")
-    else:
-        st.error("CSV columns do not match the required format.")
-        df_uploaded = pd.DataFrame()
+    df_uploaded = pd.read_csv(uploaded_file)[all_columns]
 else:
     df_uploaded = pd.DataFrame()
 
