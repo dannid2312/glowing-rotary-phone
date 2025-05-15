@@ -145,7 +145,7 @@ Selain itu, terdapat pula kolom lain yang tampaknya telah melalui proses label e
 | Curricular units 2nd sem (without evaluations) | Number of second semester curricular units without evaluations. (Numerical) |
 | Unemployment rate                              | National unemployment rate at time of enrollment (%). (Float) |
 | Inflation rate                                 | National inflation rate at time of enrollment (%). (Float) |
-| GDP                                            | Gross Domestic Product per capita at time of enrollment (in thousands of currency units). (Float) |
+| GDP                                            | Rate of Growth from Gross Domestic Product per capita at time of enrollment (%). (Float) |
 | Status                                         | Final academic status of the student. (Categorical: Enrolled, Graduate, Dropout) |
 
 #### Bivariate Data Analysis
@@ -164,7 +164,7 @@ Berdasarkan box plot yang ditampilkan, terdapat pola yang cukup jelas antara sta
 
 Berikut ini analisis multivariate antara kolom dengan menggunakan heatmap:
 
-![Multivariate](https://github.com/user-attachments/assets/a25387b6-ec12-4f88-91ce-1cf19c7df012)
+![Multivariate](https://github.com/user-attachments/assets/f528c303-67f0-4f3b-aa07-bf99a9b895a0)
 
 Berdasarkan heatmap korelasi yang ditampilkan, terlihat bahwa beberapa variabel memiliki hubungan yang cukup kuat satu sama lain, menunjukkan adanya kemungkinan multikolinearitas. Misalnya, usia saat mendaftar (age at enrollment) berkorelasi dengan status pernikahan (marital status) dan mode pendaftaran (application mode), yang bisa mengindikasikan bahwa mahasiswa yang lebih tua cenderung memiliki status pernikahan tertentu atau memilih mode pendaftaran tertentu. Selain itu, terdapat korelasi yang tinggi antara nilai masuk universitas (admission grade) dan nilai kualifikasi sebelumnya (previous qualification grade), yang menunjukkan bahwa kinerja akademik sebelumnya cukup konsisten.
 
@@ -218,42 +218,35 @@ pca_parents_columns = ['Mothers_qualification', 'Fathers_qualification', 'Mother
 
 Untuk variabel latar belakang orang tua, hasil PCA menunjukkan bahwa dua principal components saja sudah cukup untuk menjelaskan lebih dari 90% variasi dari empat variabel yang terkait, yaitu pendidikan dan pekerjaan ayah serta ibu. Hasil ini menunjukkan bahwa variabel-variabel tersebut memiliki pola keterkaitan yang sangat erat dan saling merepresentasikan satu sama lain. Misalnya, tingkat pendidikan orang tua kemungkinan berkaitan langsung dengan jenis pekerjaan yang dijalani. Oleh karena itu, dua komponen utama yang terbentuk dari proses PCA dapat dianggap sebagai representasi ringkas dari status sosial ekonomi keluarga mahasiswa. Komponen ini penting untuk mempertimbangkan pengaruh faktor keluarga terhadap prestasi akademik mahasiswa maupun kebijakan pemberian dukungan finansial dan akademik.
 
-```
-pca_background_columns = ['Marital_status', 'Application_mode', 'Application_order',
-                          'Previous_qualification', 'Previous_qualification_grade',
-                          'Admission_grade', 'Age_at_enrollment']
-```
-![pca background](https://github.com/user-attachments/assets/ddd01138-80d5-4e8d-bfcf-fc563aca55da)
+Hasil akhir dari data train setelah dilakukan praproses, termasuk reduksi dimensi menggunakan PCA, terdiri dari 25 variabel numerik dengan jumlah total 2.288 observasi. Tabel berikut merangkum masing-masing kolom beserta tipe datanya dan kategorisasi berdasarkan peran atau sumber variabel:
 
-Sedangkan pada variabel latar belakang mahasiswa, diperlukan lima principal components untuk dapat menjelaskan lebih dari 90% variasi dari tujuh variabel yang meliputi status pernikahan, jalur pendaftaran, urutan pilihan program studi, kualifikasi pendidikan sebelumnya, nilai masuk, serta usia saat mendaftar. Ini menunjukkan bahwa hubungan antar variabel pada kelompok ini tidak sekuat dua kelompok sebelumnya, sehingga informasi tersebar lebih merata di antara variabel-variabel tersebut. Meski demikian, PCA tetap berhasil mereduksi dimensi dari tujuh menjadi lima tanpa kehilangan banyak informasi penting. Komponen-komponen ini dapat dipandang sebagai representasi dari faktor demografis dan akademik awal yang membentuk profil unik tiap mahasiswa. Informasi ini dapat dimanfaatkan untuk segmentasi mahasiswa, identifikasi kelompok berisiko putus studi, maupun pengembangan strategi intervensi berbasis data.
-
-Hasil akhir dari data train setelah dilakukan praproses, termasuk reduksi dimensi menggunakan PCA, terdiri dari 23 variabel numerik dengan jumlah total 2.288 observasi. Tabel berikut merangkum masing-masing kolom beserta tipe datanya dan kategorisasi berdasarkan peran atau sumber variabel:
-
-| #   | Column                        | Non-Null Count | Dtype   |
-|-----|-------------------------------|----------------|---------|
-| 1   | Daytime_evening_attendance    | 2288           | float64 |
-| 2   | Nacionality                   | 2288           | float64 |
-| 3   | Displaced                     | 2288           | float64 |
-| 4   | Educational_special_needs     | 2288           | float64 |
-| 5   | Debtor                        | 2288           | float64 |
-| 6   | Tuition_fees_up_to_date       | 2288           | float64 |
-| 7   | Gender                        | 2288           | float64 |
-| 8   | Scholarship_holder            | 2288           | float64 |
-| 9   | International                 | 2288           | float64 |
-| 10  | Unemployment_rate             | 2288           | float64 |
-| 11  | Inflation_rate                | 2288           | float64 |
-| 12  | GDP                           | 2288           | float64 |
-| 13  | pca_academic_1                | 2288           | float64 |
-| 14  | pca_academic_2                | 2288           | float64 |
-| 15  | pca_academic_3                | 2288           | float64 |
-| 16  | pca_academic_4                | 2288           | float64 |
-| 17  | pca_parents_1                 | 2288           | float64 |
-| 18  | pca_parents_2                 | 2288           | float64 |
-| 19  | pca_background_1              | 2288           | float64 |
-| 20  | pca_background_2              | 2288           | float64 |
-| 21  | pca_background_3              | 2288           | float64 |
-| 22  | pca_background_4              | 2288           | float64 |
-| 23  | pca_background_5              | 2288           | float64 |
+| #  | Column                        | Non-Null Count | Dtype   |
+|----|------------------------------|----------------|---------|
+| 1  | Marital_status               | 2288           | float64 |
+| 2  | Application_mode             | 2288           | float64 |
+| 3  | Application_order            | 2288           | float64 |
+| 4  | Daytime_evening_attendance   | 2288           | float64 |
+| 5  | Previous_qualification       | 2288           | float64 |
+| 6  | Previous_qualification_grade | 2288           | float64 |
+| 7  | Nacionality                  | 2288           | float64 |
+| 8  | Admission_grade              | 2288           | float64 |
+| 9  | Displaced                    | 2288           | float64 |
+| 10 | Educational_special_needs    | 2288           | float64 |
+| 11 | Debtor                       | 2288           | float64 |
+| 12 | Tuition_fees_up_to_date      | 2288           | float64 |
+| 13 | Gender                       | 2288           | float64 |
+| 14 | Scholarship_holder           | 2288           | float64 |
+| 15 | Age_at_enrollment            | 2288           | float64 |
+| 16 | International                | 2288           | float64 |
+| 17 | Unemployment_rate            | 2288           | float64 |
+| 18 | Inflation_rate               | 2288           | float64 |
+| 19 | GDP                          | 2288           | float64 |
+| 20 | pca_academic_1               | 2288           | float64 |
+| 21 | pca_academic_2               | 2288           | float64 |
+| 22 | pca_academic_3               | 2288           | float64 |
+| 23 | pca_academic_4               | 2288           | float64 |
+| 24 | pca_parents_1                | 2288           | float64 |
+| 25 | pca_parents_2                | 2288           | float64 |
 
 Struktur data ini menunjukkan bahwa sebagian besar variabel awal telah dikompresi menjadi sejumlah principal components untuk mengurangi kompleksitas, menjaga informasi penting, dan meminimalkan multikolinearitas. Data ini telah siap untuk digunakan dalam model pembelajaran mesin atau analisis prediktif lainnya.
 
@@ -261,34 +254,60 @@ Struktur data ini menunjukkan bahwa sebagian besar variabel awal telah dikompres
 
 Permodelan dilakukan dengan menggunakan model Decision Tree, Random Forest, dan Gradient Boosting yang telah dilakukan hyperparameter tuning menggunakan GridSearchCV. Proses tuning dilakukan untuk menemukan kombinasi hyperparameter terbaik yang dapat meningkatkan performa setiap model. Pada model Decision Tree, tuning difokuskan pada hyperparameter seperti max_features, max_depth, dan criterion, yang bertujuan untuk mengontrol kompleksitas pohon keputusan dan meningkatkan akurasi model. Untuk Random Forest, hyperparameter yang dioptimalkan meliputi n_estimators, max_features, max_depth, dan criterion, dengan tujuan untuk meningkatkan kemampuan model dalam membuat keputusan yang lebih akurat dan stabil melalui ensemble pohon. Sedangkan pada model Gradient Boosting, tuning dilakukan terhadap max_depth, n_estimators, learning_rate, dan max_features, yang mempengaruhi kecepatan konvergensi dan pencegahan overfitting. Semua model dilatih dengan data training dan dilakukan cross-validation (cv=5) untuk memastikan validitas hasil, dengan n_jobs=-1 yang memungkinkan pemrosesan paralel.
 
-| Model              | Class | Precision | Recall | F1-score | Support |
-|--------------------|-------|-----------|--------|----------|---------|
-| Decision Tree      | 0     | 0.84      | 0.83   | 0.83     | 449     |
-|                    | 1     | 0.73      | 0.75   | 0.74     | 277     |
-|                    | Avg (macro) | 0.79  | 0.79   | 0.79     | 726     |
-|                    | Avg (weighted) | 0.80 | 0.80   | 0.80     | 726     |
-|                    | Accuracy |         |        | **0.80** |         |
-|--------------------|-------|-----------|--------|----------|---------|
-| Random Forest      | 0     | 0.90      | 0.93   | 0.91     | 449     |
-|                    | 1     | 0.88      | 0.83   | 0.85     | 277     |
-|                    | Avg (macro) | 0.89  | 0.88   | 0.88     | 726     |
-|                    | Avg (weighted) | 0.89 | 0.89   | 0.89     | 726     |
-|                    | Accuracy |         |        | **0.89** |         |
-|--------------------|-------|-----------|--------|----------|---------|
-| Gradient Boosting  | 0     | 0.92      | 0.88   | 0.90     | 449     |
-|                    | 1     | 0.81      | 0.88   | 0.85     | 277     |
-|                    | Avg (macro) | 0.87  | 0.88   | 0.87     | 726     |
-|                    | Avg (weighted) | 0.88 | 0.88   | 0.88     | 726     |
-|                    | Accuracy |         |        | **0.88** |         |
+| Model              | Class           | Precision | Recall | F1-score | Support |
+|--------------------|------------------|-----------|--------|----------|---------|
+| Decision Tree      | 0                | 0.88      | 0.85   | 0.86     | 449     |
+|                    | 1                | 0.77      | 0.81   | 0.79     | 277     |
+|                    | Avg (macro)      | 0.82      | 0.83   | 0.83     | 726     |
+|                    | Avg (weighted)   | 0.84      | 0.83   | 0.84     | 726     |
+|                    | Accuracy         |           |        | **0.83** |         |
+|--------------------|------------------|-----------|--------|----------|---------|
+| Random Forest      | 0                | 0.90      | 0.92   | 0.91     | 449     |
+|                    | 1                | 0.87      | 0.84   | 0.86     | 277     |
+|                    | Avg (macro)      | 0.89      | 0.88   | 0.89     | 726     |
+|                    | Avg (weighted)   | 0.89      | 0.89   | 0.89     | 726     |
+|                    | Accuracy         |           |        | **0.89** |         |
+|--------------------|------------------|-----------|--------|----------|---------|
+| Gradient Boosting  | 0                | 0.92      | 0.89   | 0.91     | 449     |
+|                    | 1                | 0.83      | 0.88   | 0.85     | 277     |
+|                    | Avg (macro)      | 0.88      | 0.88   | 0.88     | 726     |
+|                    | Avg (weighted)   | 0.89      | 0.89   | 0.89     | 726     |
+|                    | Accuracy         |           |        | **0.89** |         |
 
-Evaluasi terhadap tiga model klasifikasi yang terdiri dari Decision Tree, Random Forest, dan Gradient Boosting menunjukkan perbedaan yang signifikan dalam hal akurasi dan keseimbangan performa antar kelas. Decision Tree memiliki akurasi sebesar 80%, dengan nilai f1-score yang cukup rendah untuk kelas 1 (0.74), mengindikasikan bahwa model ini kurang optimal dalam mengenali kategori tersebut. Sementara itu, Random Forest mencatat performa terbaik dengan akurasi 89%, serta nilai precision dan recall yang seimbang untuk kedua kelas, menjadikannya model yang kuat dan andal. Gradient Boosting juga memberikan hasil yang kompetitif, dengan akurasi 88% dan f1-score kelas 1 sebesar 0.85. Menariknya, Gradient Boosting menunjukkan recall tertinggi untuk kelas 1 (0.88), menjadikannya pilihan tepat untuk skenario yang memprioritaskan deteksi kasus kelas minoritas secara akurat. Secara keseluruhan, Random Forest unggul sebagai model paling seimbang, sementara Gradient Boosting layak dipertimbangkan untuk fokus pada sensitivitas terhadap kelas 1.
+Evaluasi terhadap tiga model klasifikasi—Decision Tree, Random Forest, dan Gradient Boosting—dalam konteks prediksi dropout mahasiswa menunjukkan perbedaan performa yang signifikan. Decision Tree memiliki akurasi sebesar 83%, namun f1-score untuk kelas dropout (kelas 1) hanya 0.79, menunjukkan keterbatasan model ini dalam mendeteksi mahasiswa yang berisiko tinggi untuk dropout. Random Forest menunjukkan performa paling seimbang, dengan akurasi 89%, f1-score tinggi di kedua kelas (0.91 untuk non-dropout dan 0.86 untuk dropout), serta precision dan recall yang stabil, menjadikannya model yang andal untuk prediksi secara keseluruhan. Sementara itu, Gradient Boosting memberikan hasil yang kompetitif, juga dengan akurasi 89%, namun dengan keunggulan dalam recall terhadap mahasiswa dropout (0.88). Ini menjadikannya sangat berguna untuk skenario yang lebih mementingkan deteksi dini mahasiswa yang berpotensi dropout, meskipun dengan sedikit penurunan pada keseimbangan metrik lainnya.
 
-![feature importances](https://github.com/user-attachments/assets/dcea1105-e7b8-4a54-b36d-1c742b758cfd)
+![feature importances](https://github.com/user-attachments/assets/6da66216-bd8d-4cf2-98b1-98a4abaea804)
 
-Berdasarkan grafik feature importance dari model Gradient Boosting yang dipilih, terlihat bahwa komponen hasil PCA pada variabel akademik memiliki kontribusi paling besar dalam memengaruhi prediksi model. Fitur pca_academic_1 menempati posisi teratas dengan nilai koefisien tertinggi, diikuti oleh pca_academic_2, pca_academic_3, dan pca_academic_4, yang secara kumulatif menunjukkan bahwa aspek akademik mahasiswa merupakan indikator paling dominan dalam menentukan hasil prediksi, seperti risiko putus studi atau keberhasilan studi.
+| Komponen PCA         | Top Contributors                         | Bobot |
+| -------------------- | ---------------------------------------- | ----- |
+| **pca\_academic\_1** | Curricular\_units\_2nd\_sem\_grade       | 0.645 |
+|                      | Curricular\_units\_1st\_sem\_grade       | 0.578 |
+|                      | Curricular\_units\_2nd\_sem\_approved    | 0.285 |
+|                      | Curricular\_units\_1st\_sem\_approved    | 0.219 |
+|                      | Course                                   | 0.190 |
+| **pca\_academic\_2** | Curricular\_units\_1st\_sem\_credited    | 0.438 |
+|                      | Curricular\_units\_2nd\_sem\_credited    | 0.398 |
+|                      | Curricular\_units\_1st\_sem\_evaluations | 0.360 |
+|                      | Curricular\_units\_1st\_sem\_enrolled    | 0.337 |
+|                      | Curricular\_units\_2nd\_sem\_grade       | 0.322 |
+| **pca\_academic\_3** | Course                                   | 0.910 |
+|                      | Curricular\_units\_1st\_sem\_credited    | 0.213 |
+|                      | Curricular\_units\_2nd\_sem\_approved    | 0.197 |
+|                      | Curricular\_units\_2nd\_sem\_credited    | 0.187 |
+|                      | Curricular\_units\_2nd\_sem\_grade       | 0.150 |
+| **pca\_academic\_4** | Curricular\_units\_1st\_sem\_grade       | 0.660 |
+|                      | Curricular\_units\_2nd\_sem\_grade       | 0.472 |
+|                      | Curricular\_units\_1st\_sem\_evaluations | 0.325 |
+|                      | Curricular\_units\_2nd\_sem\_approved    | 0.297 |
+|                      | Curricular\_units\_2nd\_sem\_evaluations | 0.263 |
 
-Setelah fitur akademik, pca_background_1 dan Tuition_fees_up_to_date juga menunjukkan pengaruh yang signifikan, yang mengindikasikan bahwa latar belakang siswa serta kepatuhan dalam pembayaran biaya kuliah turut menjadi faktor penting dalam model. Fitur-fitur lain seperti Scholarship_holder, pca_parents_2, dan pca_background_3 juga berkontribusi, meskipun dalam proporsi yang lebih kecil. Sementara itu, fitur-fitur seperti Educational_special_needs, International, dan Daytime_evening_attendance memiliki pengaruh paling rendah terhadap hasil prediksi, yang bisa diartikan bahwa mereka tidak memberikan informasi yang cukup membedakan untuk keputusan model.
+Berdasarkan grafik feature importance dari model Gradient Boosting, terlihat bahwa komponen PCA dari variabel akademik merupakan faktor paling dominan dalam memengaruhi prediksi risiko dropout mahasiswa. Fitur pca_academic_1 menjadi kontributor tertinggi, yang terutama dipengaruhi oleh nilai akademik mahasiswa di semester 1 dan 2 (Curricular_units_1st_sem_grade dan 2nd_sem_grade) serta jumlah mata kuliah yang disetujui atau lulus. Hal ini menunjukkan bahwa kinerja akademik langsung merupakan indikator utama dalam prediksi kelulusan.
 
+Komponen pca_academic_2 menekankan pada jumlah mata kuliah yang dikreditkan, dinilai, dan diambil oleh mahasiswa, mencerminkan keterlibatan mereka dalam proses pembelajaran. Sementara itu, pca_academic_3 didominasi oleh variabel Course, menunjukkan bahwa jenis program studi yang diambil juga berpengaruh besar terhadap risiko dropout. pca_academic_4 kembali menyoroti nilai dan evaluasi akademik, memperkuat pentingnya performa belajar dalam memprediksi ketahanan studi.
+
+Selain variabel akademik, Tuition_fees_up_to_date dan Age_at_enrollment juga berkontribusi besar. Hal ini mengindikasikan bahwa kepatuhan pembayaran biaya kuliah dan usia saat masuk turut menjadi indikator penting dalam prediksi. Di sisi lain, variabel latar belakang orang tua (pca_parents_1 dan pca_parents_2) juga menunjukkan kontribusi yang cukup berarti, terutama dari tingkat pendidikan ibu dan ayah, yang dapat mencerminkan dukungan dan kesiapan akademik di lingkungan keluarga.
+
+Sebaliknya, fitur seperti Educational_special_needs, International, dan Marital_status memiliki kontribusi sangat rendah, yang berarti informasi dari fitur-fitur ini kurang relevan dalam membedakan risiko dropout pada data ini.
 
 ## Business Dashboard
 Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
