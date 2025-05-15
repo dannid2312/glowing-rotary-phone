@@ -87,7 +87,7 @@ categorical_options = {
     "Daytime_evening_attendance": {
         "Evening": 0,
         "Daytime": 1,
-    }
+    },
     "Previous_qualification": {
         "Secondary education": 1,
         "Higher education - bachelor's degree": 2,
