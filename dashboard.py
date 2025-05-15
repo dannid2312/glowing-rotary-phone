@@ -266,6 +266,7 @@ categorical_options = {
         "Personal care workers and the like": 153,
         "Protection and security services personnel": 154,
         "Market-oriented farmers and skilled agricultural and animal production workers": 161,
+    }}
        
 # Saat input manual
 manual_input = {}
