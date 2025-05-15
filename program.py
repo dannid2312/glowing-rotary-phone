@@ -62,10 +62,3 @@ def predict(data):
     result = model.predict(data)
     result = ['Dropout' if result[i] == 1 else 'Graduate' for i in range(len(result))]
     return result
-
-if __name__ == '__main__':
-    df = pd.read_csv("enrolled_students.csv")
-    df = preprocess(df)
-    print(df)
-
-    print(predict(df))
