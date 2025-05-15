@@ -92,6 +92,7 @@ if "manual_data" not in st.session_state:
     st.session_state.manual_data = pd.DataFrame(columns=all_columns)
 
 combined_data = pd.concat([st.session_state.manual_data, df_uploaded], ignore_index=True)
+result = combined_data.copy()
 
 st.subheader("🗂️ Combined Data")
 st.dataframe(combined_data, use_container_width=True)
@@ -101,11 +102,10 @@ if st.button("🔮 Predict"):
         st.warning("No data to predict.")
     else:
         hasil_prediksi = predict(preprocess(combined_data))
-        result = combined_data.copy()
         result.insert(0, "Prediction", hasil_prediksi)
         # Optionally highlight predictions
         def highlight_pred(val):
-            color = 'background-color: #b3ffb3' if val == 1 else 'background-color: #ffb3b3'
+            color = 'background-color: #b3ffb3' if val == 'Graduate' else 'background-color: #ffb3b3'
             return color
         st.subheader("📊 Prediction Results")
         st.dataframe(result.style.applymap(highlight_pred, subset=['Prediction']), use_container_width=True)
