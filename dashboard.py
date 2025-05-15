@@ -68,4 +68,5 @@ if st.button("Predict"):
     else:
         st.write("🔮 This is where your model prediction will go.")
         hasil_prediksi = predict(preprocess(combined_data))
-        st.write(hasil_prediksi)
+        combined_data.insert(0, "Prediction", hasil_prediksi)
+        st.dataframe(combined_data)
