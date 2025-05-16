@@ -80,7 +80,7 @@ with st.expander("Add Single Entry (Manual Input)", expanded=True):
 with st.expander("Or Upload CSV"):
     uploaded_file = st.file_uploader("Upload a CSV file with the correct columns", type=["csv"])
     if uploaded_file:
-        df_uploaded = pd.read_csv(uploaded_file)
+        df_uploaded = pd.read_csv(uploaded_file, sep=r'[;,]')
         # Validate columns presence
         missing_cols = [col for col in all_columns if col not in df_uploaded.columns]
         if missing_cols:
