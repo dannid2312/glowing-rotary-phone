@@ -82,6 +82,7 @@ with st.expander("Or Upload CSV"):
     if uploaded_file:
         df_uploaded = pd.read_csv(uploaded_file, sep=',')
         if len(df_uploaded.columns) == 1:
+            uploaded_file.seek(0)
             df_uploaded = pd.read_csv(uploaded_file, sep=';')
         # Validate columns presence
         missing_cols = [col for col in all_columns if col not in df_uploaded.columns]
